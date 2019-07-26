@@ -33,6 +33,8 @@ def run_event_loop():
         elif command != 'x':
             print('Input not recognised')
 
+    journal.save(journal_data, 'my_reflections')
+
 
 def list_entries(journal_data):
     if len(journal_data) > 0:
