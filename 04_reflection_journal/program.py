@@ -1,3 +1,5 @@
+import journal
+
 
 def main():
     print_header()
@@ -16,7 +18,7 @@ def print_exit():
 def run_event_loop():
     print('What would you like to do?')
 
-    journal = []
+    journal_data = journal.load()
 
     command = None
 
@@ -25,27 +27,27 @@ def run_event_loop():
         command = command.lower().strip()
 
         if command == 'l':
-            list_entries(journal)
+            list_entries(journal_data)
         elif command == 'a':
-            add_entry(journal)
+            add_entry(journal_data)
         elif command != 'x':
             print('Input not recognised')
 
 
-def list_entries(journal):
-    if len(journal) > 0:
+def list_entries(journal_data):
+    if len(journal_data) > 0:
         print('Journal entries (most recent first):')
-        journal = reversed(journal)
-        for (index, entry) in enumerate(journal):
+        journal_data = reversed(journal_data)
+        for (index, entry) in enumerate(journal_data):
             print('[{}] {}'.format(index + 1, entry))
     else:
         print('Journal is empty')
 
 
 
-def add_entry(journal):
+def add_entry(journal_data):
     entry = input('Add an entry: ')
-    journal.append(entry)
+    journal.add(entry, journal_data)
 
 
 main()
