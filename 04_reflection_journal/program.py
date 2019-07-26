@@ -18,7 +18,7 @@ def print_exit():
 def run_event_loop():
     print('What would you like to do?')
 
-    journal_data = journal.load()
+    journal_data = journal.load('my_reflections')
 
     command = None
 
