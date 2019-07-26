@@ -6,17 +6,14 @@ def load():
 
 
 def save(journal, name):
-    relative_path = os.path.join('./journals/', name + '.jrl')
+    relative_path = os.path.join('.', 'journals', name + '.jrl')
     filename = os.path.abspath(relative_path)
 
     print('Saving journal to {}'.format(filename))
 
-    file = open(filename, 'w')
-
-    for entry in journal:
-        file.write(entry + '\n')
-
-    file.close()
+    with open(filename, 'w') as file:
+        for entry in journal:
+            file.write(entry + '\n')
 
 
 def add(text, journal):
