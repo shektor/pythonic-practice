@@ -38,3 +38,17 @@ class Player:
         modifier = random.randint(self.MIN_DEFENSE, self.MAX_MODIFIER)
 
         return modifier
+
+
+class Alien(Player):
+
+    def __init__(self, name, level, super_power = 2):
+        super().__init__(name, level)
+        self.super_power = super_power
+
+
+    def attack_modifier(self):
+        modifier = super().attack_modifier()
+        super_modifier = modifier * self.super_power
+
+        return super_modifier
