@@ -1,5 +1,5 @@
 import random
-from characters import Player
+from characters import Player, Alien
 
 def main():
     print_header()
@@ -17,7 +17,8 @@ def game_loop():
         Player('Morty', 10),
         Player('Summer', 25),
         Player('Beth', 50),
-        Player('Jerry', 3)
+        Player('Jerry', 3),
+        Alien('Amish Cyborg', 40, 2)
     ]
 
     print('The contestants are {}'.format(contestants))
