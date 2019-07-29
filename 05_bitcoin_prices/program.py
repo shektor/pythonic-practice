@@ -1,4 +1,10 @@
 import requests
+import collections
+
+Prices = collections.namedtuple(
+    'Prices',
+    'currency_code, buy, sell'
+)
 
 
 def main():
@@ -7,8 +13,10 @@ def main():
     currency_code = input_currency_code()
     buy_price = get_buy_price(currency_code)
     sell_price = get_sell_price(currency_code)
-    
-    print_prices(currency_code, buy_price, sell_price)
+
+    price_data = Prices(currency_code = currency_code, buy = buy_price, sell = sell_price)
+
+    print_prices(price_data)
 
 
 def print_header():
@@ -44,9 +52,9 @@ def coinbase_api(endpoint, currency_code):
     return amount
 
 
-def print_prices(currency_code, buy, sell):
-    print('Buy 1 BTC @ {} {}'.format(buy, currency_code))
-    print('Sell 1 BTC @ {} {}'.format(sell, currency_code))
+def print_prices(price_data):
+    print('Buy 1 BTC @ {} {}'.format(price_data.buy, price_data.currency_code))
+    print('Sell 1 BTC @ {} {}'.format(price_data.sell, price_data.currency_code))
 
 
 if __name__ == '__main__':
