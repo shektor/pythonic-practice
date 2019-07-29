@@ -1,5 +1,5 @@
 import random
-
+from characters import Player
 
 def main():
     print_header()
@@ -12,14 +12,28 @@ def print_header():
 
 def game_loop():
 
-    contestants = ['Rick 1', 'Rick 2', 'Morty 1', 'Morty 2']
+    contestants = [
+        Player('Rick', 100),
+        Player('Morty', 10),
+        Player('Summer', 25),
+        Player('Beth', 50),
+        Player('Jerry', 3)
+    ]
+
     print('The contestants are {}'.format(contestants))
 
     print('The battle begins...')
     while len(contestants) > 1:
-        defeated = random.choice(contestants)
-        print('{} is defeated'.format(defeated))
-        contestants.remove(defeated)
+        p1 = random.choice(contestants)
+        p2 = random.choice(contestants)
+
+        print('{} attacks {}'.format(p1, p2))
+
+        if p1.attack() > p2.defense():
+            print('{} is defeated'.format(p2))
+            contestants.remove(p2)
+        else:
+            print('{} blocks'.format(p2))
 
     winner = contestants[0]
 
