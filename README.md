@@ -26,4 +26,4 @@ Most apps will provide instructions in the console and usually ask for input.
 3. **Birthday App** - Functions
 4. **Reflection Journal** - Creating modules and file I/O
 5. **Bitcoin Prices** - HTTP requests and data structures
-6. **Rick and Mort Battle Royale** - Classes and inheritence
+6. **Rick and Morty Battle Royale** - Classes and inheritence
