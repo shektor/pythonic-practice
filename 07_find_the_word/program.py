@@ -8,12 +8,15 @@ def main():
         print("Please provide a valid location.")
         return
 
-    text = get_search_text_from_user()
-    if not text:
+    word = get_search_word_from_user()
+    if not word:
         print("Please provide a word to search for.")
         return
 
-    search_file(folder, text)
+    matches = search_folders(folder, word)
+
+    for match in matches:
+        print(match)
 
 
 def print_header():
@@ -31,13 +34,37 @@ def get_folder_from_user():
     return os.path.abspath(folder)
 
 
-def get_search_text_from_user():
-    text = input('What word would you like to find? ')
-    return text
+def get_search_word_from_user():
+    word = input('What word would you like to find? ')
+    return word.lower()
 
 
-def search_file(folder, text):
-    print("Would search '{}' for the word '{}'".format(folder, text))
+def search_folders(folder, word):
+
+    all_matches = []
+    items = os.listdir(folder)
+
+    for item in items:
+        full_item = os.path.join(folder, item)
+        if os.path.isdir(full_item):
+            continue
+
+        matches = search_file(full_item, word)
+        all_matches.extend(matches)
+
+    return all_matches
+
+
+def search_file(filename, word):
+    matches = []
+
+    with open(filename, 'r', encoding='utf-8') as fin:
+
+        for line in fin:
+            if line.lower().find(word) >= 0:
+                matches.append(line)
+
+        return matches
 
 
 if __name__ == '__main__':
