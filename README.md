@@ -5,8 +5,8 @@ A collection of small console apps created to learn Pythonic software developmen
 ## Getting started
 
 ```bash
-> git clone git@github.com:shektor/python-refresh.git
-> cd python-refresh
+> git clone git@github.com:shektor/pythonic-practice.git
+> cd pythonic-practice
 ```
 
 ## How to use
@@ -27,3 +27,4 @@ Most apps will provide instructions in the console and usually ask for input.
 4. **Reflection Journal** - Creating modules and file I/O
 5. **Bitcoin Prices** - HTTP requests and data structures
 6. **Rick and Morty Battle Royale** - Classes and inheritence
+7. **Find the Word** - Recursion and generator methods
