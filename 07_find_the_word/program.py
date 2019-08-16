@@ -52,10 +52,11 @@ def search_folders(folder, word):
     for item in items:
         full_item = os.path.join(folder, item)
         if os.path.isdir(full_item):
-            continue
-
-        matches = search_file(full_item, word)
-        all_matches.extend(matches)
+            matches = search_folders(full_item, word)
+            all_matches.extend(matches)
+        else:
+            matches = search_file(full_item, word)
+            all_matches.extend(matches)
 
     return all_matches
 
@@ -63,13 +64,14 @@ def search_folders(folder, word):
 def search_file(filename, word):
     matches = []
 
-    with open(filename, 'r', encoding='utf-8') as fin:
+    with open(filename, 'rb') as fin:
 
         line_num = 0
-        for line in fin:
+        for line in fin.readlines():
             line_num += 1
-            if line.lower().find(word) >= 0:
-                line = line.strip()
+
+            line = line.decode('utf8', 'ignore').lower().strip()
+            if line.find(word) >= 0:
                 match = SearchResult(line=line_num, file=filename, text=line)
                 matches.append(match)
 
