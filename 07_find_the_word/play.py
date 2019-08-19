@@ -12,3 +12,19 @@ print('1!={:,}, 3!={:,}, 5!={:,}, 10!={:,}'.format(
     factorial(5),
     factorial(10),
 ))
+
+
+def fibonacci_co():
+    current = 0
+    next = 1
+
+    while True:
+        current, next = next, next + current
+        yield current
+
+
+for n in fibonacci_co():
+    if n > 100:
+        break
+
+    print(n, end=', ')
