@@ -45,25 +45,17 @@ def get_search_word_from_user():
 
 
 def search_folders(folder, word):
-
-    all_matches = []
     items = os.listdir(folder)
 
     for item in items:
         full_item = os.path.join(folder, item)
         if os.path.isdir(full_item):
-            matches = search_folders(full_item, word)
-            all_matches.extend(matches)
+            yield from search_folders(full_item, word)
         else:
-            matches = search_file(full_item, word)
-            all_matches.extend(matches)
-
-    return all_matches
+            yield from search_file(full_item, word)
 
 
 def search_file(filename, word):
-    matches = []
-
     with open(filename, 'rb') as fin:
 
         line_num = 0
@@ -73,9 +65,7 @@ def search_file(filename, word):
             line = line.decode('utf8', 'ignore').lower().strip()
             if line.find(word) >= 0:
                 match = SearchResult(line=line_num, file=filename, text=line)
-                matches.append(match)
-
-        return matches
+                yield match
 
 
 if __name__ == '__main__':
