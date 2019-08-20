@@ -19,8 +19,13 @@ def get_data_file():
 
 
 def load_file(filename):
+    print('Loading data from: {}'.format(filename))
     return []
 
 
 def query_data(data):
     pass
+
+
+if __name__ == '__main__':
+    main()
