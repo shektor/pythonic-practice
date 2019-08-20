@@ -1,4 +1,5 @@
 import os
+import csv
 
 
 def main():
@@ -20,11 +21,20 @@ def get_data_file():
 
 def load_file(filename):
     print('Loading data from: {}'.format(filename))
-    return []
+
+    data = []
+    with open(filename, 'r', encoding='utf-8') as fin:
+        reader = csv.DictReader(fin)
+        for row in reader:
+            print(row)
+            data.append(row)
+
+    return data
 
 
 def query_data(data):
-    pass
+    for row in data:
+        print(row)
 
 
 if __name__ == '__main__':
