@@ -1,5 +1,6 @@
 import os
 import csv
+from transaction import Transaction
 
 
 def main():
@@ -22,19 +23,20 @@ def get_data_file():
 def load_file(filename):
     print('Loading data from: {}'.format(filename))
 
-    data = []
+    transactions = []
     with open(filename, 'r', encoding='utf-8') as fin:
         reader = csv.DictReader(fin)
-        for row in reader:
-            print(row)
-            data.append(row)
 
-    return data
+        for row in reader:
+            transaction = Transaction.create_from_dict(row)
+            transactions.append(transaction)
+
+    return transactions
 
 
 def query_data(data):
     for row in data:
-        print(row)
+        print(row.__dict__)
 
 
 if __name__ == '__main__':
