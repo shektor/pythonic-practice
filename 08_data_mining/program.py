@@ -1,5 +1,6 @@
 import os
 import csv
+import statistics
 from transaction import Transaction
 
 
@@ -43,7 +44,18 @@ def query_data(data):
     low_transaction = data[0]
     print('Least expensive house: ${:,}'.format(low_transaction.price))
 
+    prices = []
+    for transaction in data:
+        prices.append(transaction.price)
+    average_price = statistics.mean(prices)
+    print('Average house price: ${:,}'.format(int(average_price)))
 
+    prices = []
+    for transaction in data:
+        if transaction.beds == 2:
+            prices.append(transaction.price)
+    average_2bed_price = statistics.mean(prices)
+    print('Average 2 bed house price: ${:,}'.format(int(average_2bed_price)))
 
 
 if __name__ == '__main__':
