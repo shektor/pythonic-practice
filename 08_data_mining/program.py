@@ -35,8 +35,15 @@ def load_file(filename):
 
 
 def query_data(data):
-    for row in data:
-        print(row.__dict__)
+    data.sort(key=lambda transaction: transaction.price)
+
+    high_transaction = data[-1]
+    print('Most expensive house: ${:,}'.format(high_transaction.price))
+
+    low_transaction = data[0]
+    print('Least expensive house: ${:,}'.format(low_transaction.price))
+
+
 
 
 if __name__ == '__main__':
