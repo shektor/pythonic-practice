@@ -44,18 +44,18 @@ def query_data(data):
     low_transaction = data[0]
     print('Least expensive house: ${:,}'.format(low_transaction.price))
 
-    prices = [
+    prices = (
         transaction.price
         for transaction in data
-    ]
+    )
     average_price = statistics.mean(prices)
     print('Average house price: ${:,}'.format(int(average_price)))
 
-    two_bed_prices = [
+    two_bed_prices = (
         transaction.price
         for transaction in data
         if transaction.beds == 2
-    ]
+    )
     average_2bed_price = statistics.mean(two_bed_prices)
     print('Average 2 bed house price: ${:,}'.format(int(average_2bed_price)))
 
