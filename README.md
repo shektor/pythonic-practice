@@ -28,3 +28,4 @@ Most apps will provide instructions in the console and usually ask for input.
 5. **Bitcoin Prices** - HTTP requests and data structures
 6. **Rick and Morty Battle Royale** - Classes and inheritence
 7. **Find the Word** - Recursion and generator methods
+7. **House Price Data Mining** - Dictionaries, Lambdas, CSV file parsing, static methods, list comprehension and generator expressions
