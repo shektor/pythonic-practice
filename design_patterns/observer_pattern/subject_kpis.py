@@ -15,4 +15,4 @@ class KPIs(AbsSubject):
     def set_kpis(self, open_tickets, closed_tickets):
         self._open_tickets = open_tickets
         self._closed_tickets = closed_tickets
-        self.notify()
+        self.notify(open_tickets, closed_tickets)

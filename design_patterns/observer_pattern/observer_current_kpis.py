@@ -12,7 +12,6 @@ class CurrentKPIs(AbsObserver):
         print(f'Open tickets: {self.open_tickets}')
         print(f'Closed tickets: {self.closed_tickets}')
 
-    def update(self):
-        self.open_tickets = self._kpis.open_tickets
-        self.closed_tickets = self._kpis.closed_tickets
+    def update(self, values):
+        self.open_tickets, self.closed_tickets = values
         self.display()

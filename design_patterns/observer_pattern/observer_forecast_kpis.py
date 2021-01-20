@@ -12,7 +12,7 @@ class ForecastKPIs(AbsObserver):
         print(f'Forecasted Open tickets: {self.open_tickets}')
         print(f'Forecasted Closed tickets: {self.closed_tickets}')
 
-    def update(self):
-        self.open_tickets = self._kpis.open_tickets * 3
-        self.closed_tickets = self._kpis.closed_tickets * 5
+    def update(self, values):
+        self.open_tickets = values[0] * 3
+        self.closed_tickets = values[1] * 5
         self.display()
